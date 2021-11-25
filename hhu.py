@@ -10,6 +10,7 @@ from datetime import timedelta
 from datetime import datetime
 from urllib import parse
 import configparser
+import os
 
 
 # In[4]:
@@ -18,7 +19,9 @@ import configparser
 def hhu():
     url = 'http://ids.hhu.edu.cn/amserver/UI/Login'
     config = configparser.RawConfigParser()
-    config.read('info.ini', encoding='utf-8-sig')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    print(BASE_DIR)
+    config.read(BASE_DIR+'/info.ini', encoding='utf-8-sig')
     dic1 = ['学号', '密码', '姓名', '身份证号', '学院', '专业', '攻读学位', '导师', '培养类别', '宿舍楼', '宿舍号', '手机号码', '紧急联系人电话']
 
     for i in range(0, 13):
